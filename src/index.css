@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply flex justify-center items-center h-screen m-0 bg-gradient-to-r from-blue-400 to-gray-200;
+}
+
+.container {
+  @apply text-center bg-blue-900 p-5 rounded-lg shadow-lg w-full max-w-3xl;
+}
+
+header .logo {
+  @apply w-32 h-auto mx-auto mb-5;
+}
+
+header p {
+  @apply text-xl text-white;
+}
+
+button {
+  @apply p-3 m-3 text-lg cursor-pointer border-none rounded-lg bg-blue-500 text-white transition-all duration-300;
+}
+
+button:hover {
+  @apply bg-blue-700 transform scale-110 shadow-lg;
+}
+
+button:disabled {
+  @apply bg-gray-400 cursor-not-allowed transform-none shadow-none;
+}
+
+button#btnStop {
+  @apply bg-red-500;
+}
+
+button#btnStop:hover {
+  @apply bg-red-700;
+}
+
+button#btnContinue {
+  @apply bg-green-500;
+}
+
+button#btnContinue:hover {
+  @apply bg-green-700;
+}
+
+button#btnRestart {
+  @apply bg-yellow-500;
+}
+
+button#btnRestart:hover {
+  @apply bg-yellow-700;
+}
+
+textarea {
+  @apply w-full h-32 p-3 mb-5 text-lg rounded-lg bg-gray-300 resize-none;
+}
+
+textarea#textToSpeak {
+  @apply h-20;
+}
+
+.led {
+  @apply w-4 h-4 rounded-full bg-gray-400 inline-block mr-3;
+}
+
+.led-active {
+  @apply bg-red-500;
+}
