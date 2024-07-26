@@ -12,11 +12,13 @@
   "dependencies": {
     "@tensorflow-models/speech-commands": "^0.5.4",
     "@tensorflow/tfjs": "^4.20.0",
+    "axios": "^1.7.2",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

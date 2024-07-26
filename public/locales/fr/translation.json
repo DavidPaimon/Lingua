@@ -1,0 +1,22 @@
+{
+  "title": "Apprenez, communiquez et testez votre prononciation",
+  "start": "Démarrer",
+  "stop": "Arrêter",
+  "continue": "Continuer l'enregistrement",
+  "restart": "Redémarrer l'enregistrement",
+  "placeholder": "Appuyez sur démarrer et commencez à parler",
+  "translate": "Traduction",
+  "speak": "Parler!",
+  "ES": "Espagnol",
+  "US": "Anglais",
+  "BR": "Portugais",
+  "FR": "Français",
+  "IT": "Italien",
+  "DE": "Allemand",
+  "CN": "Chinois (Mandarin)",
+  "RU": "Russe",
+  "JP": "Japonais",
+  "KR": "Coréen",
+  "IN": "Hindi",
+  "SA": "Arabe"
+}

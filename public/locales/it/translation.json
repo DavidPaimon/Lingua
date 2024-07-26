@@ -1,0 +1,22 @@
+{
+  "title": "Impara, comunica e testa la tua pronuncia",
+  "start": "Inizia",
+  "stop": "Ferma",
+  "continue": "Continua la registrazione",
+  "restart": "Riavvia la registrazione",
+  "placeholder": "Premi inizia e inizia a parlare",
+  "translate": "Traduzione",
+  "speak": "Parla!",
+  "ES": "Spagnolo",
+  "US": "Inglese",
+  "BR": "Portoghese",
+  "FR": "Francese",
+  "IT": "Italiano",
+  "DE": "Tedesco",
+  "CN": "Cinese (Mandarino)",
+  "RU": "Russo",
+  "JP": "Giapponese",
+  "KR": "Coreano",
+  "IN": "Hindi",
+  "SA": "Arabo"
+}

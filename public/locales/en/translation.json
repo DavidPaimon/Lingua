@@ -1,0 +1,22 @@
+{
+  "title": "Learn, communicate and test your pronunciation",
+  "start": "Start",
+  "stop": "Stop",
+  "continue": "Continue Recording",
+  "restart": "Restart Recording",
+  "placeholder": "Press start and begin to speak",
+  "translate": "Translation",
+  "speak": "Speak!",
+  "ES": "Spanish",
+  "US": "English",
+  "BR": "Portuguese",
+  "FR": "French",
+  "IT": "Italian",
+  "DE": "German",
+  "CN": "Chinese (Mandarin)",
+  "RU": "Russian",
+  "JP": "Japanese",
+  "KR": "Korean",
+  "IN": "Hindi",
+  "SA": "Arabic"
+}

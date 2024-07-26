@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
-const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, language }) => {
+const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, setTranslatedTranscript, language, targetLanguage }) => {
   useEffect(() => {
     if (!('webkitSpeechRecognition' in window)) {
       console.error('Speech recognition not supported');
@@ -9,18 +10,32 @@ const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, language
 
     const recognition = new window.webkitSpeechRecognition();
     recognition.continuous = true;
-    recognition.interimResults = false;
+    recognition.interimResults = true;
     recognition.lang = language;
 
-    recognition.onresult = (event) => {
-      let finalTranscript = '';
+    recognition.onresult = async (event) => {
+      let interimTranscript = '';
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
-          finalTranscript += event.results[i][0].transcript;
+          const finalText = event.results[i][0].transcript;
+          setFinalTranscript(prev => prev + finalText + ' ');
+
+          try {
+            const response = await axios.get(`https://api.mymemory.translated.net/get`, {
+              params: {
+                q: finalText,
+                langpair: `${language.split('-')[0]}|${targetLanguage}`
+              }
+            });
+            setTranslatedTranscript(prev => prev + response.data.responseData.translatedText + ' ');
+          } catch (error) {
+            console.error('Error translating text:', error);
+          }
+
+        } else {
+          interimTranscript += event.results[i][0].transcript;
         }
       }
-      finalTranscript = finalTranscript.charAt(0).toUpperCase() + finalTranscript.slice(1);
-      setFinalTranscript(prev => prev + finalTranscript);
     };
 
     recognition.onerror = (event) => {
@@ -41,7 +56,7 @@ const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, language
     return () => {
       recognition.stop();
     };
-  }, [recognizing, setRecognizing, setFinalTranscript, language]);
+  }, [recognizing, setRecognizing, setFinalTranscript, setTranslatedTranscript, language, targetLanguage]);
 
   return null;
 };

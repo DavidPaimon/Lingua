@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 body {
-  @apply flex justify-center items-center h-screen m-0 bg-gradient-to-r from-blue-400 to-gray-200;
+  @apply flex justify-center items-center min-h-screen m-0 bg-gradient-to-r from-blue-400 to-indigo-600 text-white;
 }
 
 .container {
-  @apply text-center bg-blue-900 p-5 rounded-lg shadow-lg w-full max-w-3xl;
+  @apply text-center bg-blue-900 p-6 rounded-lg shadow-lg w-full max-w-2xl relative;
 }
 
 header .logo {
-  @apply w-32 h-auto mx-auto mb-5;
+  @apply w-32 h-auto mx-auto mb-4;
 }
 
 header p {
-  @apply text-xl text-white;
+  @apply text-2xl font-bold mb-4;
 }
 
 button {
@@ -23,7 +23,7 @@ button {
 }
 
 button:hover {
-  @apply bg-blue-700 transform scale-110 shadow-lg;
+  @apply bg-blue-700 transform scale-105 shadow-lg;
 }
 
 button:disabled {
@@ -38,28 +38,16 @@ button#btnStop:hover {
   @apply bg-red-700;
 }
 
-button#btnContinue {
-  @apply bg-green-500;
-}
-
-button#btnContinue:hover {
-  @apply bg-green-700;
-}
-
-button#btnRestart {
-  @apply bg-yellow-500;
-}
-
-button#btnRestart:hover {
-  @apply bg-yellow-700;
-}
-
 textarea {
-  @apply w-full h-32 p-3 mb-5 text-lg rounded-lg bg-gray-300 resize-none;
+  @apply w-full h-32 p-3 mb-5 text-lg rounded-lg bg-gray-700 text-white resize-none;
 }
 
 textarea#textToSpeak {
   @apply h-20;
+}
+
+textarea#translatedTextarea {
+  @apply h-32;
 }
 
 .led {
@@ -68,4 +56,12 @@ textarea#textToSpeak {
 
 .led-active {
   @apply bg-red-500;
+}
+
+select {
+  @apply p-2 rounded bg-gray-700 text-white;
+}
+
+header select {
+  @apply absolute top-4 right-4;
 }
