@@ -3,12 +3,13 @@ import axios from 'axios';
 
 const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, setTranslatedTranscript, language, targetLanguage }) => {
   useEffect(() => {
-    if (!('webkitSpeechRecognition' in window)) {
+    if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
       console.error('Speech recognition not supported');
       return;
     }
 
-    const recognition = new window.webkitSpeechRecognition();
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = language;
@@ -17,7 +18,7 @@ const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, setTrans
       let interimTranscript = '';
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
-          const finalText = event.results[i][0].transcript;
+          const finalText = event.results[i][0].transcript.trim();
           setFinalTranscript(prev => prev + finalText + ' ');
 
           try {
@@ -27,7 +28,9 @@ const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, setTrans
                 langpair: `${language.split('-')[0]}|${targetLanguage}`
               }
             });
-            setTranslatedTranscript(prev => prev + response.data.responseData.translatedText + ' ');
+            console.log(`Params: q=${finalText}, langpair=${language.split('-')[0]}|${targetLanguage}`);
+            const translatedText = response.data.responseData.translatedText.trim();
+            setTranslatedTranscript(prev => prev + translatedText + ' ');
           } catch (error) {
             console.error('Error translating text:', error);
           }

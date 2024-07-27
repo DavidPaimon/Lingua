@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { HiOutlineSpeakerWave } from 'react-icons/hi2';
 import Recognition from './components/Recognition';
 
 function App() {
@@ -36,12 +37,18 @@ function App() {
     window.speechSynthesis.speak(utterance);
   };
 
+  const handleSpeakText = (text, lang) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    window.speechSynthesis.speak(utterance);
+  };
+
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 bg-gray-800 text-white rounded-lg shadow-md">
+    <div className="container mx-auto p-4 sm:p-6 bg-gray-900 text-white rounded-lg shadow-md">
       <header className="flex flex-col sm:flex-row justify-between items-center mb-4">
         <div className="text-center mb-4 sm:mb-0">
           <img src="/assets/lingua.png" alt="LINGUA" className="mx-auto w-24 sm:w-32 mb-2" />
@@ -144,25 +151,49 @@ function App() {
           </>
         )}
       </div>
-      <textarea
-        id="textarea"
-        className="w-full h-32 p-2 mb-4 rounded bg-gray-700"
-        placeholder={t('placeholder')}
-        readOnly
-        value={finalTranscript}
-      ></textarea>
-      <textarea
-        id="translatedTextarea"
-        className="w-full h-32 p-2 mb-4 rounded bg-gray-700"
-        placeholder={t('translate')}
-        readOnly
-        value={translatedTranscript}
-      ></textarea>
-      <textarea
-        id="textToSpeak"
-        className="w-full h-20 p-2 mb-4 rounded bg-gray-700"
-        placeholder={t('speak')}
-      ></textarea>
+      <div className="relative mb-4">
+        <textarea
+          id="textarea"
+          className="w-full h-32 p-2 rounded bg-gray-700"
+          placeholder={t('placeholder')}
+          readOnly
+          value={finalTranscript}
+        ></textarea>
+        <button
+          className="absolute top-2 right-2 p-2 text-white bg-blue-500 rounded hover:bg-blue-700"
+          onClick={() => handleSpeakText(finalTranscript, language)}
+        >
+          <HiOutlineSpeakerWave className="w-6 h-6" />
+        </button>
+      </div>
+      <div className="relative mb-4">
+        <textarea
+          id="translatedTextarea"
+          className="w-full h-32 p-2 rounded bg-gray-700"
+          placeholder={t('translate')}
+          readOnly
+          value={translatedTranscript}
+        ></textarea>
+        <button
+          className="absolute top-2 right-2 p-2 text-white bg-blue-500 rounded hover:bg-blue-700"
+          onClick={() => handleSpeakText(translatedTranscript, targetLanguage)}
+        >
+          <HiOutlineSpeakerWave className="w-6 h-6" />
+        </button>
+      </div>
+      <div className="relative mb-4">
+        <textarea
+          id="textToSpeak"
+          className="w-full h-20 p-2 rounded bg-gray-700"
+          placeholder={t('speak')}
+        ></textarea>
+        <button
+          className="absolute top-2 right-2 p-2 text-white bg-blue-500 rounded hover:bg-blue-700"
+          onClick={handleSpeak}
+        >
+          <HiOutlineSpeakerWave className="w-6 h-6" />
+        </button>
+      </div>
       <div className="flex justify-center">
         <button
           id="btnSpeak"
