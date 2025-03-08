@@ -4,7 +4,7 @@ import axios from 'axios';
 const Recognition = ({ recognizing, setRecognizing, setFinalTranscript, setTranslatedTranscript, language, targetLanguage }) => {
   useEffect(() => {
     if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
-      console.error('Speech recognition not ');
+      console.error('Speech recognition not supported');
       return;
     }
 
